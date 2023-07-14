@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:multiquiz/category_screen.dart';
-import 'package:multiquiz/home_screen.dart';
-import 'package:multiquiz/questions_screen.dart';
-import 'package:multiquiz/result_screen.dart';
+import 'package:multiquiz/Screens/add_question_screen.dart';
+import 'package:multiquiz/Screens/category_screen.dart';
+import 'package:multiquiz/Screens/home_screen.dart';
+import 'package:multiquiz/Screens/questions_screen.dart';
+import 'package:multiquiz/Screens/result_screen.dart';
 
 class ScreenController extends StatefulWidget {
   const ScreenController({super.key});
@@ -17,13 +18,13 @@ class _ScreenControllerState extends State<ScreenController> {
 
   @override
   void initState() {
-    ActiveScreen = HomeScreen(toCategoryScreen);
+    ActiveScreen = HomeScreen(toCategoryScreen, toaddQuestionScreen);
     super.initState();
   }
 
   void toHomeScreen() {
     setState(() {
-      ActiveScreen = HomeScreen(toCategoryScreen);
+      ActiveScreen = HomeScreen(toCategoryScreen, toaddQuestionScreen);
     });
   }
 
@@ -42,6 +43,12 @@ class _ScreenControllerState extends State<ScreenController> {
   void toResultScreen() {
     setState(() {
       ActiveScreen = ResultScreen(toHomeScreen);
+    });
+  }
+
+  void toaddQuestionScreen() {
+    setState(() {
+      ActiveScreen = AddQuestionScreen(toHomeScreen);
     });
   }
 
