@@ -1,4 +1,4 @@
-# multiquiz
+# ThinkQuiz
 
 A new Flutter project.
 
