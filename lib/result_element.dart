@@ -87,6 +87,5 @@ class ResultElement extends StatelessWidget {
         ],
       ),
     );
-    ;
   }
 }
