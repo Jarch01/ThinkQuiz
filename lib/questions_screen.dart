@@ -3,6 +3,7 @@ import 'package:multiquiz/button.dart';
 import 'package:multiquiz/category_screen.dart';
 import 'package:multiquiz/gradient.dart';
 import 'package:multiquiz/question_answer_set.dart';
+import 'package:multiquiz/result_element.dart';
 
 // ignore: must_be_immutable
 class QuestionScreen extends StatefulWidget {
@@ -34,88 +35,12 @@ class QuestionScreenState extends State<QuestionScreen> {
 
   void nextQuestion(Widget answer) {
     answerList.add(answer);
+    if (ResultElement.isCorrect) correct = correct + 1;
     if (questionNumber == set.length - 1) {
       function();
     }
     questionNumber = questionNumber + 1;
     setState(() {});
-  }
-
-  Container getContainer(String answer, String question, String correctAnswer) {
-    Color color = const Color.fromARGB(255, 207, 52, 41);
-    if (answer == correctAnswer) {
-      correct = correct + 1;
-      color = const Color.fromARGB(255, 40, 184, 45);
-    }
-    return Container(
-      alignment: Alignment.center,
-      padding: const EdgeInsets.all(10),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Container(
-            margin: const EdgeInsets.all(10),
-            padding: const EdgeInsets.all(10),
-            decoration: BoxDecoration(
-              borderRadius: const BorderRadius.all(
-                Radius.circular(15),
-              ),
-              border: Border.all(
-                color: Colors.yellow,
-              ),
-            ),
-            child: Text(
-              (questionNumber + 1).toString(),
-              style: const TextStyle(
-                color: Colors.black,
-                fontSize: 25,
-              ),
-            ),
-          ),
-          Container(
-            padding: const EdgeInsets.all(10),
-            decoration: BoxDecoration(
-              borderRadius: const BorderRadius.all(
-                Radius.circular(15),
-              ),
-              border: Border.all(
-                color: Colors.yellow,
-              ),
-            ),
-            width: 500,
-            child: Text(
-              question,
-              style: const TextStyle(
-                color: Colors.black,
-                fontSize: 25,
-              ),
-            ),
-          ),
-          const SizedBox(
-            width: 30,
-          ),
-          Container(
-            padding: const EdgeInsets.all(10),
-            decoration: BoxDecoration(
-              borderRadius: const BorderRadius.all(
-                Radius.circular(15),
-              ),
-              border:
-                  Border.all(color: const Color.fromARGB(255, 20, 113, 201)),
-              color: color,
-            ),
-            width: 200,
-            child: Text(
-              answer,
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 25,
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
   }
 
   @override
@@ -145,10 +70,11 @@ class QuestionScreenState extends State<QuestionScreen> {
             set[questionNumber].OptionSet[0],
             () {
               nextQuestion(
-                getContainer(
+                ResultElement(
                   set[questionNumber].OptionSet[0],
                   set[questionNumber].Question,
                   set[questionNumber].CorrectAnswer,
+                  questionNumber,
                 ),
               );
             },
@@ -159,10 +85,11 @@ class QuestionScreenState extends State<QuestionScreen> {
             set[questionNumber].OptionSet[1],
             () {
               nextQuestion(
-                getContainer(
+                ResultElement(
                   set[questionNumber].OptionSet[1],
                   set[questionNumber].Question,
                   set[questionNumber].CorrectAnswer,
+                  questionNumber,
                 ),
               );
             },
@@ -173,10 +100,11 @@ class QuestionScreenState extends State<QuestionScreen> {
             set[questionNumber].OptionSet[2],
             () {
               nextQuestion(
-                getContainer(
+                ResultElement(
                   set[questionNumber].OptionSet[2],
                   set[questionNumber].Question,
                   set[questionNumber].CorrectAnswer,
+                  questionNumber,
                 ),
               );
             },
@@ -187,10 +115,11 @@ class QuestionScreenState extends State<QuestionScreen> {
             set[questionNumber].OptionSet[3],
             () {
               nextQuestion(
-                getContainer(
+                ResultElement(
                   set[questionNumber].OptionSet[3],
                   set[questionNumber].Question,
                   set[questionNumber].CorrectAnswer,
+                  questionNumber,
                 ),
               );
             },
