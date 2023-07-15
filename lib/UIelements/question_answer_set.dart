@@ -6,6 +6,13 @@ class QuestionAnswer {
 }
 
 class QuestionAnswerSet {
+  static void addQuestionAnswer(String subject, QuestionAnswer newAddition) {
+    if (subject == 'Mathematics') Mathset.add(newAddition);
+    if (subject == 'Chemistry') Chemistryset.add(newAddition);
+    if (subject == 'Life Science') LifeScienceset.add(newAddition);
+    if (subject == 'Physics') Physicsset.add(newAddition);
+  }
+
   static List<QuestionAnswer> Mathset = [
     QuestionAnswer(
       '0.7 ebong 0.07 er moddhe somporko holo ',

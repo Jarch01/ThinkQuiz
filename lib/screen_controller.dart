@@ -18,17 +18,18 @@ class _ScreenControllerState extends State<ScreenController> {
 
   @override
   void initState() {
-    ActiveScreen = HomeScreen(toCategoryScreen, toaddQuestionScreen);
+    ActiveScreen = HomeScreen(toCategoryScreenforStart, toCategoryScreenforAdd);
     super.initState();
   }
 
   void toHomeScreen() {
     setState(() {
-      ActiveScreen = HomeScreen(toCategoryScreen, toaddQuestionScreen);
+      ActiveScreen =
+          HomeScreen(toCategoryScreenforStart, toCategoryScreenforAdd);
     });
   }
 
-  void toCategoryScreen() {
+  void toCategoryScreenforStart() {
     setState(() {
       ActiveScreen = CategoryScreen(toQuestionScreen);
     });
@@ -46,7 +47,13 @@ class _ScreenControllerState extends State<ScreenController> {
     });
   }
 
-  void toaddQuestionScreen() {
+  void toCategoryScreenforAdd() {
+    setState(() {
+      ActiveScreen = CategoryScreen(toAddQuestionScreen);
+    });
+  }
+
+  void toAddQuestionScreen() {
     setState(() {
       ActiveScreen = AddQuestionScreen(toHomeScreen);
     });

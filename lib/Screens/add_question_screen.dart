@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:multiquiz/Screens/category_screen.dart';
 import 'package:multiquiz/UIelements/button.dart';
 import 'package:multiquiz/UIelements/gradient.dart';
+import 'package:multiquiz/UIelements/question_answer_set.dart';
 
+// ignore: must_be_immutable
 class AddQuestionScreen extends StatefulWidget {
   AddQuestionScreen(this.function, {super.key});
   void Function() function;
@@ -13,6 +16,20 @@ class AddQuestionScreen extends StatefulWidget {
 class AddQuestionScreenState extends State<AddQuestionScreen> {
   AddQuestionScreenState(this.function);
   void Function() function;
+
+  void addQuestion() {
+    String subject = CategoryScreen.subjectChoosed;
+    QuestionAnswerSet.addQuestionAnswer(
+      subject,
+      QuestionAnswer(
+        'Adding',
+        ['Successful', 'Fail', 'Not Available', 'Bye'],
+        'Successful',
+      ),
+    );
+    function();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -25,8 +42,8 @@ class AddQuestionScreenState extends State<AddQuestionScreen> {
         children: [
           Button(
             Colors.blue,
-            "Pehli fursat me nikal",
-            function,
+            "Add Successful ?",
+            addQuestion,
             300,
           ),
         ],
